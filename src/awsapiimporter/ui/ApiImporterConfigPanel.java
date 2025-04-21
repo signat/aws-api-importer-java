@@ -32,18 +32,30 @@ public class ApiImporterConfigPanel extends JPanel {
         JCheckBox cb_param = new JCheckBox();
         JPanel param_panel = createRowPanel(cb_param, "Import APIs by action parameter.");
         cb_param.setSelected(apiEndpointsModel.getCaptureAction());
+        cb_param.addActionListener(e -> {
+            apiEndpointsModel.setCaptureAction(cb_param.isSelected());
+        });
 
         JCheckBox cb_header = new JCheckBox();
         JPanel header_panel = createRowPanel(cb_header, "Import APIs by X-Amz-Target header.");
         cb_header.setSelected(apiEndpointsModel.getCaptureTarget());
+        cb_header.addActionListener(e -> {
+            apiEndpointsModel.setCaptureTarget(cb_header.isSelected());
+        });
 
         JCheckBox cb_ua = new JCheckBox();
         JPanel ua_panel = createRowPanel(cb_ua, "Import APIs by aws/cli User-Agent.");
         cb_ua.setSelected(apiEndpointsModel.getCaptureCLI());
+        cb_ua.addActionListener(e -> {
+            apiEndpointsModel.setCaptureCLI(cb_ua.isSelected());
+        });
 
         JCheckBox cb_uri = new JCheckBox();
         JPanel uri_panel = createRowPanel(cb_uri, "Import APIs by any GET, POST, PUT, PATCH, DELETE from in-scope endpoints.");
         cb_uri.setSelected(apiEndpointsModel.getCaptureURI());
+        cb_uri.addActionListener(e -> {
+            apiEndpointsModel.setCaptureURI(cb_uri.isSelected());
+        });
 
         cb_enabled.addActionListener(e -> {
             apiEndpointsModel.setCaptureEnabled(cb_enabled.isSelected());
